@@ -3,24 +3,52 @@ package com.userregistration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-
 public class UserRegistrationTest {
 
     @Test
     public void givenFirstName_WhenProper_ShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean firstName = userRegistration.validateFirstName("Karthik");
+        boolean firstName = false;
+        try {
+            firstName = userRegistration.validateFirstName("Benki");
+        } catch (UserRegistrationException e) {
+            e.printStackTrace();
+        }
         Assertions.assertTrue(firstName);
+    }
+
+    @Test
+    public void givenFirstName_WhenNotProper_ShouldThrowException() {
+        UserRegistration userRegistration = new UserRegistration();
+        try {
+            userRegistration.validateFirstName("Ka");
+        } catch (UserRegistrationException e) {
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
     public void givenLastName_WhenProper_ShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean lastName = userRegistration.validateLastName("Benki");
+        boolean lastName = false;
+        try {
+            lastName = userRegistration.validateLastName("Benki");
+        } catch (UserRegistrationException e) {
+            e.printStackTrace();
+        }
         Assertions.assertTrue(lastName);
+    }
+
+    @Test
+    public void givenLastName_WhenNotProper_ShouldThrowException() {
+        UserRegistration userRegistration = new UserRegistration();
+        try {
+            userRegistration.validateLastName("Be");
+        } catch (UserRegistrationException e) {
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test

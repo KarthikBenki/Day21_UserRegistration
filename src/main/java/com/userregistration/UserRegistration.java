@@ -11,14 +11,22 @@ public class UserRegistration {
     private static final String PHONE_PATTERN = "^[9]{1}[1]{1}[ ]?[6-9]{1}[0-9]{9}$";
     private static final String PASSWORD_PATTERN = "^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$";
 
-    public boolean validateFirstName(String fname) {
+    public boolean validateFirstName(String fname) throws UserRegistrationException {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
+        if(pattern.matches(NAME_PATTERN,fname)==true)
         return pattern.matches(NAME_PATTERN,fname);
+        else{
+                throw new UserRegistrationException("Send proper FirstName");
+        }
     }
 
-    public boolean validateLastName(String lName) {
+    public boolean validateLastName(String lName) throws UserRegistrationException {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
+        if(pattern.matches(NAME_PATTERN,lName)==true)
         return pattern.matches(NAME_PATTERN,lName);
+        else{
+            throw new UserRegistrationException("Send proper LastName");
+        }
     }
 
     public boolean validateEmail(String email) {
